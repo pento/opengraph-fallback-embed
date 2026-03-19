@@ -1,21 +1,24 @@
 {
-	"name": "pento/opengraph-fallback-embed",
-	"description": "WordPress plugin that provides an embed block based on a site's OpenGraph tags.",
-	"type": "wordpress-plugin",
-	"license": "GPL-2.0-or-later",
-	"require-dev": {
-		"wp-coding-standards/wpcs": "^3.3",
-		"phpcompatibility/phpcompatibility-wp": "^2.1",
-		"dealerdirect/phpcodesniffer-composer-installer": "^1.2",
-		"yoast/phpunit-polyfills": "^1.1.0"
-	},
-	"config": {
-		"allow-plugins": {
-			"dealerdirect/phpcodesniffer-composer-installer": true
-		}
-	},
-	"scripts": {
-		"phpcs": "phpcs",
-		"phpcbf": "phpcbf"
-	}
+  "name": "pento/opengraph-fallback-embed",
+  "description": "WordPress plugin that provides an embed block based on a site's OpenGraph tags.",
+  "type": "wordpress-plugin",
+  "license": "GPL-2.0-or-later",
+  "require-dev": {
+    "wp-coding-standards/wpcs": "^3.3",
+    "phpcompatibility/phpcompatibility-wp": "^2.1",
+    "dealerdirect/phpcodesniffer-composer-installer": "^1.2",
+    "yoast/phpunit-polyfills": "^1.1.0"
+  },
+  "config": {
+    "platform": {
+      "php": "8.2"
+    },
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  },
+  "scripts": {
+    "phpcs": "phpcs",
+    "phpcbf": "phpcbf"
+  }
 }
