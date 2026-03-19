@@ -39,6 +39,9 @@ The card uses the `.og-fallback-embed` CSS class. You can override styles in you
 
 == Changelog ==
 
+= 1.3.2 =
+* Fix the block version number not being bumped in the last release.
+
 = 1.3.1 =
 * Remove some unnecessary files from the plugin zip file.
 
