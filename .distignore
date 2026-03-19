@@ -15,3 +15,5 @@ package-lock.json
 phpcs.xml.dist
 phpunit.xml.dist
 .DS_Store
+.git
+.eslintrc.js

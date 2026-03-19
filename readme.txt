@@ -8,6 +8,7 @@ Stable tag: 1.3.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Author URI: https://pento.net
 
 Provides an embed block and auto-embed fallback based on a site's OpenGraph tags when no other embed handler matches the URL.
 
