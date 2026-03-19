@@ -49,3 +49,16 @@ npm run lint:css    # CSS lint
 npx wp-env start    # Start WordPress test environment
 npm test            # Run PHPUnit tests
 ```
+
+### Release
+
+```bash
+bin/release.sh <version>
+```
+
+The release script will:
+
+1. Validate the version format (X.Y.Z) and preconditions (clean tree, on `main`, tag doesn't exist).
+2. Check that `readme.txt` has a changelog entry for the version.
+3. Bump the version in `package.json`, `class-opengraph-fallback-embed.php`, `readme.txt`, and `src/blocks/og-embed/block.json`.
+4. Commit, tag, and push. The deploy workflow then builds the zip and creates the GitHub release with notes extracted from the changelog.
