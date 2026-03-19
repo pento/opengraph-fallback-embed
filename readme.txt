@@ -4,7 +4,7 @@ Donate link: https://github.com/sponsors/pento
 Tags: embed, opengraph, link, card, block
 Requires at least: 6.3
 Tested up to: 6.9
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -38,6 +38,9 @@ No. This plugin only activates when WordPress has no other embed handler for the
 The card uses the `.og-fallback-embed` CSS class. You can override styles in your theme.
 
 == Changelog ==
+
+= 1.3.1 =
+* Remove some unnecessary files from the plugin zip file.
 
 = 1.3.0 =
 * Add support for falling back to OG tags when the Embed block fails.
