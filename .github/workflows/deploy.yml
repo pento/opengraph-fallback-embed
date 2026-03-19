@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     tags:
-      - '*'
+      - "*"
 
 jobs:
   release:
@@ -41,14 +41,14 @@ jobs:
       - name: Extract changelog for this version
         id: changelog
         run: |
-          VERSION="${GITHUB_REF_NAME}"
           # Extract the changelog section for this version from readme.txt
-          NOTES=$(awk -v ver="$VERSION" '
+          NOTES=$(awk -v ver="$GITHUB_REF_NAME" '
             /^= / { if (found) exit; if ($0 == "= " ver " =") found=1; next }
             found { print }
           ' readme.txt)
           # Write to file to preserve newlines
           echo "$NOTES" > release-notes.txt
+          cat release-notes.txt
 
       - name: Create GitHub release
         env:
@@ -57,4 +57,4 @@ jobs:
           gh release create "$GITHUB_REF_NAME" \
             --title "$GITHUB_REF_NAME" \
             --notes-file release-notes.txt \
-            *.zip
+            ../opengraph-fallback-embed.$GITHUB_REF_NAME.zip
