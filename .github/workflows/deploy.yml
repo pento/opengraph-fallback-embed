@@ -38,8 +38,23 @@ jobs:
       - name: Build distribution zip
         run: wp dist-archive .
 
+      - name: Extract changelog for this version
+        id: changelog
+        run: |
+          VERSION="${GITHUB_REF_NAME}"
+          # Extract the changelog section for this version from readme.txt
+          NOTES=$(awk -v ver="$VERSION" '
+            /^= / { if (found) exit; if ($0 == "= " ver " =") found=1; next }
+            found { print }
+          ' readme.txt)
+          # Write to file to preserve newlines
+          echo "$NOTES" > release-notes.txt
+
       - name: Create GitHub release
-        uses: softprops/action-gh-release@v2
-        with:
-          files: "*.zip"
-          generate_release_notes: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" \
+            --title "$GITHUB_REF_NAME" \
+            --notes-file release-notes.txt \
+            *.zip
