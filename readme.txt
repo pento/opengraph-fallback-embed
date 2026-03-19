@@ -1,5 +1,6 @@
 === OpenGraph Fallback Embed ===
-Contributors: pento
+Author: pento
+Author URI: https://pento.net
 Donate link: https://github.com/sponsors/pento
 Tags: embed, opengraph, link, card, block
 Requires at least: 6.3
@@ -8,7 +9,6 @@ Stable tag: 1.3.2
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Author URI: https://pento.net
 
 Provides an embed block and auto-embed fallback based on a site's OpenGraph tags when no other embed handler matches the URL.
 
@@ -38,6 +38,9 @@ No. This plugin only activates when WordPress has no other embed handler for the
 The card uses the `.og-fallback-embed` CSS class. You can override styles in your theme.
 
 == Changelog ==
+
+= 1.3.3 =
+* Remove one more file from the plugin zip.
 
 = 1.3.2 =
 * Fix the block version number not being bumped in the last release.

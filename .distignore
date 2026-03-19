@@ -1,3 +1,4 @@
+/.git
 /.github
 /bin
 /node_modules
@@ -5,6 +6,8 @@
 /src
 /tests
 .distignore
+.DS_Store
+.eslintrc.js
 .gitignore
 .wp-env.json
 .wp-env.override.json
@@ -15,6 +18,4 @@ package.json
 package-lock.json
 phpcs.xml.dist
 phpunit.xml.dist
-.DS_Store
-.git
-.eslintrc.js
+README.md
