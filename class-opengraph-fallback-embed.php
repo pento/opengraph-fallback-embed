@@ -4,6 +4,7 @@
  * Description: Provides an embed block based on a site's OpenGraph tags when no other embed handler matches the URL.
  * Version: 1.3.3
  * Author: pento
+ * Author URI: https://pento.net
  * License: GPL-2.0-or-later
  * Requires at least: 6.3
  * Requires PHP: 7.4
