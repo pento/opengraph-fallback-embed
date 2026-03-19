@@ -66,10 +66,10 @@ jobs:
         run: npm run build
 
       - name: Start wp-env
-        run: npx wp-env start
+        run: npx wp-env start --config=.wp-env.test.json
 
       - name: Install Composer dependencies in test container
-        run: npx wp-env run tests-cli --env-cwd=wp-content/plugins/opengraph-fallback-embed composer install --no-interaction --prefer-dist
+        run: npx wp-env run cli --config=.wp-env.test.json --env-cwd=wp-content/plugins/opengraph-fallback-embed composer install --no-interaction --prefer-dist
 
       - name: Run PHPUnit
-        run: npm test
+        run: npx wp-env run cli --config=.wp-env.test.json --env-cwd=wp-content/plugins/opengraph-fallback-embed vendor/bin/phpunit

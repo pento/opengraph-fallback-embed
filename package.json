@@ -19,6 +19,6 @@
     "lint:css:fix": "wp-scripts lint-style 'src/**/*.css' --fix",
     "lint:php": "composer phpcs",
     "lint:php:fix": "composer phpcbf",
-    "test": "wp-env run tests-cli --env-cwd=wp-content/plugins/opengraph-fallback-embed vendor/bin/phpunit"
+    "test": "wp-env run cli --env-cwd=wp-content/plugins/opengraph-fallback-embed vendor/bin/phpunit"
   }
 }

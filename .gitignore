@@ -4,5 +4,6 @@
 .phpcs-cache
 .phpunit.result.cache
 .wp-env.override.json
+.wp-env.test.override.json
 .DS_Store
 *.zip

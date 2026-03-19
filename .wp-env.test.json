@@ -2,5 +2,6 @@
 	"core": "WordPress/WordPress",
 	"plugins": [ "." ],
 	"phpVersion": "8.5",
-	"testsEnvironment": false
+	"testsEnvironment": false,
+	"port": 8889
 }

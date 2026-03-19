@@ -11,6 +11,8 @@
 .gitignore
 .wp-env.json
 .wp-env.override.json
+.wp-env.test.json
+.wp-env.test.override.json
 .phpcs-cache
 composer.json
 composer.lock
