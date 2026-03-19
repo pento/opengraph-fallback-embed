@@ -1,0 +1,17 @@
+/.github
+/node_modules
+/vendor
+/src
+/tests
+.distignore
+.gitignore
+.wp-env.json
+.wp-env.override.json
+.phpcs-cache
+composer.json
+composer.lock
+package.json
+package-lock.json
+phpcs.xml.dist
+phpunit.xml.dist
+.DS_Store

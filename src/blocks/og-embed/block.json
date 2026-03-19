@@ -1,0 +1,28 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "og-fallback-embed/card",
+	"version": "1.3.0",
+	"title": "OpenGraph Embed",
+	"category": "embed",
+	"icon": "share-alt",
+	"description": "Embed any page as a rich link card using its OpenGraph tags.",
+	"keywords": [ "embed", "link", "opengraph", "og", "card", "preview" ],
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ],
+		"spacing": {
+			"margin": true
+		}
+	},
+	"attributes": {
+		"url": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"textdomain": "opengraph-fallback-embed",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}

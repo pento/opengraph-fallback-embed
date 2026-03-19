@@ -1,0 +1,22 @@
+/* Input row inside the placeholder */
+.og-fallback-embed-input-row {
+	display: flex;
+	gap: 8px;
+	width: 100%;
+	align-items: flex-start;
+}
+
+.og-fallback-embed-input-row .components-text-control__input {
+	flex: 1;
+}
+
+.og-fallback-embed-input-error {
+	margin-top: 8px;
+	color: #cc1818;
+	font-size: 13px;
+}
+
+/* Prevent link clicks in the editor preview */
+.og-fallback-embed-preview {
+	pointer-events: none;
+}
