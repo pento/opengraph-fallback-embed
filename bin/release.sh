@@ -71,6 +71,7 @@ echo "Version bump: $CURRENT_VERSION → $VERSION"
 echo ""
 echo "Files to update:"
 echo "  - package.json"
+echo "  - package-lock.json (version will be updated automatically by npm)"
 echo "  - class-opengraph-fallback-embed.php"
 echo "  - readme.txt"
 echo "  - src/blocks/og-embed/block.json"
@@ -83,6 +84,9 @@ confirm "Proceed with release $VERSION?"
 # package.json
 sed -i '' "s/\"version\": \".*\"/\"version\": \"$VERSION\"/" package.json
 
+# package-lock.json
+npm install --package-lock-only
+
 # class-opengraph-fallback-embed.php
 sed -i '' "s/\* Version: .*/\* Version: $VERSION/" class-opengraph-fallback-embed.php
 
@@ -94,7 +98,7 @@ sed -i '' "s/\"version\": \".*\"/\"version\": \"$VERSION\"/" src/blocks/og-embed
 
 # --- Commit, tag, push ---
 
-git add package.json class-opengraph-fallback-embed.php readme.txt src/blocks/og-embed/block.json
+git add package.json package-lock.json class-opengraph-fallback-embed.php readme.txt src/blocks/og-embed/block.json
 git commit -m "chore: bump version to $VERSION."
 
 git tag "$VERSION"
