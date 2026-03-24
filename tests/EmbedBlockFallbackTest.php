@@ -8,8 +8,8 @@ class EmbedBlockFallbackTest extends WP_UnitTestCase {
 	/**
 	 * URLs used across tests.
 	 */
-	private const TEST_URL     = 'https://example.com/article';
-	private const YOUTUBE_URL  = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+	private const TEST_URL    = 'https://example.com/article';
+	private const YOUTUBE_URL = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
 
 	/**
 	 * Minimal HTML with OG tags.

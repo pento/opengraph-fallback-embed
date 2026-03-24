@@ -24,7 +24,7 @@ class RestApiTest extends WP_UnitTestCase {
 	public function test_unauthenticated_request_returns_401(): void {
 		wp_set_current_user( 0 );
 
-		$request  = new WP_REST_Request( 'GET', '/og-fallback-embed/v1/preview' );
+		$request = new WP_REST_Request( 'GET', '/og-fallback-embed/v1/preview' );
 		$request->set_param( 'url', 'https://example.com' );
 		$response = rest_do_request( $request );
 
@@ -35,7 +35,7 @@ class RestApiTest extends WP_UnitTestCase {
 		$user_id = self::factory()->user->create( [ 'role' => 'subscriber' ] );
 		wp_set_current_user( $user_id );
 
-		$request  = new WP_REST_Request( 'GET', '/og-fallback-embed/v1/preview' );
+		$request = new WP_REST_Request( 'GET', '/og-fallback-embed/v1/preview' );
 		$request->set_param( 'url', 'https://example.com' );
 		$response = rest_do_request( $request );
 
@@ -56,7 +56,7 @@ class RestApiTest extends WP_UnitTestCase {
 		$user_id = self::factory()->user->create( [ 'role' => 'editor' ] );
 		wp_set_current_user( $user_id );
 
-		$request  = new WP_REST_Request( 'GET', '/og-fallback-embed/v1/preview' );
+		$request = new WP_REST_Request( 'GET', '/og-fallback-embed/v1/preview' );
 		$request->set_param( 'url', 'not-a-url' );
 		$response = rest_do_request( $request );
 
@@ -77,7 +77,7 @@ class RestApiTest extends WP_UnitTestCase {
 			}
 		);
 
-		$request  = new WP_REST_Request( 'GET', '/og-fallback-embed/v1/preview' );
+		$request = new WP_REST_Request( 'GET', '/og-fallback-embed/v1/preview' );
 		$request->set_param( 'url', 'https://example.com/page' );
 		$response = rest_do_request( $request );
 
