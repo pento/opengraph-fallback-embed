@@ -46,6 +46,9 @@ The plugin uses [@wordpress/scripts](https://developer.wordpress.org/block-edito
 
 == Changelog ==
 
+= 1.3.6 =
+* Removed a dev file from the plugin zip.
+
 = 1.3.5 =
 * Add source code repository link to readme.
 * Use plugin-specific prefix for transient cache keys.
