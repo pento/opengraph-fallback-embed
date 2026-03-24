@@ -33,6 +33,19 @@
 		</properties>
 	</rule>
 
+	<!-- Disable inline phpcs:ignore annotations — all suppressions must go through this config -->
+	<arg name="ignore-annotations" />
+
+	<!-- Local file reads: no WP API alternative for reading bundled assets -->
+	<rule ref="WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents">
+		<exclude-pattern>class-opengraph-fallback-embed.php</exclude-pattern>
+	</rule>
+
+	<!-- Test bootstrap echoes before WordPress is loaded, so esc_html() is unavailable -->
+	<rule ref="WordPress.Security.EscapeOutput.OutputNotEscaped">
+		<exclude-pattern>tests/bootstrap.php</exclude-pattern>
+	</rule>
+
 	<!-- Use colors and show sniff names -->
 	<arg name="colors" />
 	<arg value="sp" />

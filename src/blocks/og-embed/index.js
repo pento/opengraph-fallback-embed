@@ -66,7 +66,7 @@ function Edit( { attributes, setAttributes } ) {
 					)
 				);
 			} );
-	}, [ inputUrl ] ); // eslint-disable-line react-hooks/exhaustive-deps
+	}, [ inputUrl, setAttributes ] );
 
 	const handleKeyDown = useCallback(
 		( event ) => {

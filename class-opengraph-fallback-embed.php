@@ -38,7 +38,7 @@ class OpenGraph_Fallback_Embed {
 		add_filter( 'rest_request_after_callbacks', [ __CLASS__, 'intercept_oembed_proxy' ], 10, 3 );
 
 		// Fallback for core/embed block — frontend path.
-		add_filter( 'pre_oembed_result', [ __CLASS__, 'intercept_pre_oembed' ], 99, 3 );
+		add_filter( 'pre_oembed_result', [ __CLASS__, 'intercept_pre_oembed' ], 99, 2 );
 
 		// Register the Gutenberg block.
 		add_action( 'init', [ __CLASS__, 'register_block' ] );
@@ -112,7 +112,7 @@ class OpenGraph_Fallback_Embed {
 		// to SandBox, so wp_enqueue_style() / wp_add_inline_style() cannot reach
 		// the iframe. Inline styles in the oEmbed HTML are the only option.
 		$css_file  = plugin_dir_path( __FILE__ ) . 'build/og-embed/style-index.css';
-		$css       = file_exists( $css_file ) ? file_get_contents( $css_file ) : ''; // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+		$css       = file_exists( $css_file ) ? file_get_contents( $css_file ) : '';
 		$card_html = self::render_card( $og, $url );
 
 		$styled_html = '';
@@ -141,10 +141,9 @@ class OpenGraph_Fallback_Embed {
 	 *
 	 * @param string|null $result The oEmbed HTML result, or null if not yet handled.
 	 * @param string      $url    The URL being embedded.
-	 * @param array       $args   Additional arguments.
 	 * @return string|null Card HTML, or null to let WordPress continue.
 	 */
-	public static function intercept_pre_oembed( $result, $url, $args ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed
+	public static function intercept_pre_oembed( $result, $url ) {
 		// Another filter already provided a result.
 		if ( null !== $result ) {
 			return $result;
@@ -388,19 +387,18 @@ class OpenGraph_Fallback_Embed {
 	 * @return string HTML markup.
 	 */
 	public static function render_card( array $og, string $url ): string {
-		$title       = esc_html( $og['title'] );
-		$description = esc_html( $og['description'] );
-		$link        = esc_url( ! empty( $og['url'] ) ? $og['url'] : $url );
-		$site_name   = esc_html( $og['site_name'] );
-		$host        = esc_html( wp_parse_url( $url, PHP_URL_HOST ) );
+		$title       = $og['title'];
+		$description = $og['description'];
+		$link        = ! empty( $og['url'] ) ? $og['url'] : $url;
+		$site_name   = $og['site_name'];
+		$host        = wp_parse_url( $url, PHP_URL_HOST );
 
 		$image_html = '';
 		if ( ! empty( $og['image'] ) ) {
-			$image_url  = esc_url( $og['image'] );
 			$image_html = sprintf(
 				'<div class="og-fallback-embed__image"><img src="%s" alt="%s" loading="lazy" /></div>',
-				$image_url,
-				$title
+				esc_url( $og['image'] ),
+				esc_attr( $title )
 			);
 		}
 
@@ -409,14 +407,14 @@ class OpenGraph_Fallback_Embed {
 		ob_start();
 		?>
 		<div class="og-fallback-embed">
-			<?php echo $image_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+			<?php echo wp_kses_post( $image_html ); ?>
 			<div class="og-fallback-embed__content">
-				<p class="og-fallback-embed__provider"><?php echo $provider; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
+				<p class="og-fallback-embed__provider"><?php echo esc_html( $provider ); ?></p>
 				<p class="og-fallback-embed__title">
-					<a href="<?php echo $link; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>" target="_blank" rel="noopener noreferrer"><?php echo $title; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></a>
+					<a href="<?php echo esc_url( $link ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html( $title ); ?></a>
 				</p>
 				<?php if ( $description ) : ?>
-					<p class="og-fallback-embed__description"><?php echo $description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
+					<p class="og-fallback-embed__description"><?php echo esc_html( $description ); ?></p>
 				<?php endif; ?>
 			</div>
 		</div>

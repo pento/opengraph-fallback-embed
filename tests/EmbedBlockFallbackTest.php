@@ -154,7 +154,7 @@ class EmbedBlockFallbackTest extends WP_UnitTestCase {
 	public function test_pre_oembed_no_provider_returns_card(): void {
 		$this->mock_http_response( self::OG_HTML );
 
-		$result = OpenGraph_Fallback_Embed::intercept_pre_oembed( null, self::TEST_URL, [] );
+		$result = OpenGraph_Fallback_Embed::intercept_pre_oembed( null, self::TEST_URL );
 
 		$this->assertIsString( $result );
 		$this->assertStringContainsString( 'og-fallback-embed', $result );
@@ -162,7 +162,7 @@ class EmbedBlockFallbackTest extends WP_UnitTestCase {
 	}
 
 	public function test_pre_oembed_with_provider_returns_null(): void {
-		$result = OpenGraph_Fallback_Embed::intercept_pre_oembed( null, self::YOUTUBE_URL, [] );
+		$result = OpenGraph_Fallback_Embed::intercept_pre_oembed( null, self::YOUTUBE_URL );
 
 		$this->assertNull( $result );
 	}
@@ -170,7 +170,7 @@ class EmbedBlockFallbackTest extends WP_UnitTestCase {
 	public function test_pre_oembed_existing_result_not_overridden(): void {
 		$existing = '<div class="existing-embed">Already handled</div>';
 
-		$result = OpenGraph_Fallback_Embed::intercept_pre_oembed( $existing, self::TEST_URL, [] );
+		$result = OpenGraph_Fallback_Embed::intercept_pre_oembed( $existing, self::TEST_URL );
 
 		$this->assertSame( $existing, $result );
 	}
@@ -178,7 +178,7 @@ class EmbedBlockFallbackTest extends WP_UnitTestCase {
 	public function test_pre_oembed_no_og_data_returns_null(): void {
 		$this->mock_http_response( self::NO_OG_HTML );
 
-		$result = OpenGraph_Fallback_Embed::intercept_pre_oembed( null, self::TEST_URL, [] );
+		$result = OpenGraph_Fallback_Embed::intercept_pre_oembed( null, self::TEST_URL );
 
 		$this->assertNull( $result );
 	}
