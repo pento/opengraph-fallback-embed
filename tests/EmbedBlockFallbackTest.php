@@ -27,8 +27,8 @@ class EmbedBlockFallbackTest extends WP_UnitTestCase {
 
 	public function tear_down(): void {
 		parent::tear_down();
-		delete_transient( 'og_embed_' . md5( self::TEST_URL ) );
-		delete_transient( 'og_embed_' . md5( self::YOUTUBE_URL ) );
+		delete_transient( OpenGraph_Fallback_Embed::CACHE_KEY_PREFIX . md5( self::TEST_URL ) );
+		delete_transient( OpenGraph_Fallback_Embed::CACHE_KEY_PREFIX . md5( self::YOUTUBE_URL ) );
 	}
 
 	/* ------------------------------------------------------------------

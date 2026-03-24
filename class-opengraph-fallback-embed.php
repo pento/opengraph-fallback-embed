@@ -23,6 +23,9 @@ class OpenGraph_Fallback_Embed {
 	/** @var int Cache duration in seconds (default 7 days). */
 	const CACHE_TTL = 604800;
 
+	/** @var string Transient key prefix for cached OG data. */
+	const CACHE_KEY_PREFIX = 'opengraph_fallback_embed_';
+
 	/* ------------------------------------------------------------------
 	 * Bootstrap
 	 * ----------------------------------------------------------------*/
@@ -104,8 +107,10 @@ class OpenGraph_Fallback_Embed {
 
 		$site_name = ! empty( $og['site_name'] ) ? $og['site_name'] : wp_parse_url( $url, PHP_URL_HOST );
 
-		// The editor renders "rich" embeds inside a sandboxed iframe,
-		// so styles must be inlined.
+		// The block editor renders "rich" type oEmbed responses inside a sandboxed
+		// iframe (wp.components.SandBox). The Embed block does not forward styles
+		// to SandBox, so wp_enqueue_style() / wp_add_inline_style() cannot reach
+		// the iframe. Inline styles in the oEmbed HTML are the only option.
 		$css_file  = plugin_dir_path( __FILE__ ) . 'build/og-embed/style-index.css';
 		$css       = file_exists( $css_file ) ? file_get_contents( $css_file ) : ''; // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
 		$card_html = self::render_card( $og, $url );
@@ -252,7 +257,7 @@ class OpenGraph_Fallback_Embed {
 	 * @return array<string, string> Associative array of OG properties.
 	 */
 	public static function get_og_data( string $url ): array {
-		$cache_key = 'og_embed_' . md5( $url );
+		$cache_key = self::CACHE_KEY_PREFIX . md5( $url );
 		$cached    = get_transient( $cache_key );
 
 		if ( is_array( $cached ) ) {
