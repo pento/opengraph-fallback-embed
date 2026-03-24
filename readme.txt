@@ -36,7 +36,19 @@ No. This plugin only activates when WordPress has no other embed handler for the
 
 The card uses the `.og-fallback-embed` CSS class. You can override styles in your theme.
 
+== Development ==
+
+The source code for this plugin, including unminified JavaScript and CSS, is available on GitHub:
+
+https://github.com/pento/opengraph-fallback-embed
+
+The plugin uses [@wordpress/scripts](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-scripts/) for building. Source files are in the `src/` directory. See the repository README for build instructions.
+
 == Changelog ==
+
+= 1.3.5 =
+* Add source code repository link to readme.
+* Use plugin-specific prefix for transient cache keys.
 
 = 1.3.4 =
 * Tweak the plugin header.
