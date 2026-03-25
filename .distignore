@@ -1,5 +1,6 @@
 /.git
 /.github
+/.wordpress-org
 /bin
 /node_modules
 /vendor

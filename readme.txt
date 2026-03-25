@@ -3,7 +3,7 @@ Contributors: pento
 Donate link: https://github.com/sponsors/pento
 Tags: embed, opengraph, link, card, block
 Requires at least: 6.3
-Tested up to: 6.9
+Tested up to: 7.0
 Stable tag: 1.3.6
 Requires PHP: 7.4
 License: GPLv2 or later
@@ -40,11 +40,20 @@ The card uses the `.og-fallback-embed` CSS class. You can override styles in you
 
 The source code for this plugin, including unminified JavaScript and CSS, is available on GitHub:
 
-https://github.com/pento/opengraph-fallback-embed
+[OpenGraph Fallback Embed on GitHub](https://github.com/pento/opengraph-fallback-embed)
 
 The plugin uses [@wordpress/scripts](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-scripts/) for building. Source files are in the `src/` directory. See the repository README for build instructions.
 
+== Screenshots ==
+
+1. A URL with no oEmbed provider shows as a plain link by default.
+2. With OpenGraph Fallback Embed active, the same URL renders as a rich card with title, description, and image.
+3. The OpenGraph Embed block in the editor with a live preview.
+
 == Changelog ==
+
+= 1.3.7 =
+* Added screenshots, and tweaked readme.txt.
 
 = 1.3.6 =
 * Removed a dev file from the plugin zip.

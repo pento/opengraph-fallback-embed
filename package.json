@@ -4,12 +4,13 @@
   "description": "WordPress plugin that provides an embed block based on a site's OpenGraph tags.",
   "private": true,
   "devDependencies": {
-    "@wordpress/scripts": "^31.6.0",
+    "@resvg/resvg-js": "^2.6.2",
     "@wordpress/env": "^11.2.0",
+    "@wordpress/scripts": "^31.6.0",
     "npm-run-all": "^4.1.5"
   },
   "scripts": {
-    "build": "wp-scripts build --webpack-src-dir=src/blocks",
+    "build": "wp-scripts build --webpack-src-dir=src/blocks && node bin/build-icons.js",
     "start": "wp-scripts start --webpack-src-dir=src/blocks",
     "lint": "npm-run-all --parallel lint:*",
     "lint:fix": "npm-run-all --parallel lint:*:fix",

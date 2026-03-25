@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="256" y2="256" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2563a8"/>
+      <stop offset="100%" stop-color="#1a3f6f"/>
+    </linearGradient>
+    <clipPath id="gc">
+      <circle cx="128" cy="128" r="56"/>
+    </clipPath>
+    <linearGradient id="ul-line" x1="68" y1="92" x2="79" y2="99" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#5cb8f0"/>
+      <stop offset="100%" stop-color="#b8ddf5"/>
+    </linearGradient>
+    <linearGradient id="lr-line" x1="188" y1="164" x2="177" y2="157" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#5cb8f0"/>
+      <stop offset="100%" stop-color="#b8ddf5"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Rounded hexagon background -->
+  <polygon points="128,16 224,70 224,186 128,240 32,186 32,70"
+           fill="url(#bg)" stroke="url(#bg)" stroke-width="16" stroke-linejoin="round"/>
+
+  <!-- Connection lines (below nodes and globe outline) -->
+  <line x1="68" y1="92" x2="79" y2="99" stroke="url(#ul-line)" stroke-width="3.5" stroke-linecap="round"/>
+  <line x1="188" y1="164" x2="177" y2="157" stroke="url(#lr-line)" stroke-width="3.5" stroke-linecap="round"/>
+
+  <!-- Connection nodes (on top of lines) -->
+  <circle cx="60" cy="87" r="10" fill="#5cb8f0"/>
+  <circle cx="196" cy="169" r="10" fill="#5cb8f0"/>
+
+  <!-- Globe grid, clipped to sphere -->
+  <g clip-path="url(#gc)" stroke="#7cc4f5" fill="none" stroke-width="2.5">
+    <!-- Equator -->
+    <line x1="72" y1="128" x2="184" y2="128"/>
+    <!-- Prime meridian -->
+    <line x1="128" y1="72" x2="128" y2="184"/>
+    <!-- Longitude arcs -->
+    <ellipse cx="128" cy="128" rx="22" ry="56"/>
+    <ellipse cx="128" cy="128" rx="42" ry="56"/>
+    <!-- Latitude lines -->
+    <line x1="80" y1="100" x2="176" y2="100"/>
+    <line x1="80" y1="156" x2="176" y2="156"/>
+  </g>
+
+  <!-- Globe outline (on top, covers connection line ends) -->
+  <circle cx="128" cy="128" r="56" fill="none" stroke="#b8ddf5" stroke-width="3.5"/>
+</svg>
