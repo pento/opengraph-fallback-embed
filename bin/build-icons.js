@@ -18,7 +18,10 @@ for ( const size of [ 128, 256 ] ) {
 
 // Banners (from banner.svg, native 1544x500)
 const bannerSvg = readFileSync( join( assetsDir, 'banner.svg' ), 'utf8' );
-for ( const [ width, height ] of [ [ 772, 250 ], [ 1544, 500 ] ] ) {
+for ( const [ width, height ] of [
+	[ 772, 250 ],
+	[ 1544, 500 ],
+] ) {
 	const resvg = new Resvg( bannerSvg, {
 		fitTo: { mode: 'width', value: width },
 	} );
